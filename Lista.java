@@ -190,4 +190,44 @@ public class Lista <T>{
         
         return sb.toString();
     }
+
+    public int size() {
+        int count = 0;
+        odo<T> corrente = head;
+    
+        while (corrente != null) {
+            count++;
+            corrente = corrente.next;
+        }
+    
+        return count;
+    }
+
+    public boolean contiene(T dato) {
+        Nodo<T> corrente = head;
+        
+        while (corrente != null) {
+            if (corrente.dato.equals(dato)) {
+                return true;
+            }
+            corrente = corrente.next;
+        }
+        
+        return false;
+    }
+
+    public int indiceDi(T dato) {
+        Nodo<T> corrente = head;
+        int indice = 0;
+        
+        while (corrente != null) {
+            if (corrente.dato.equals(dato)) {
+                return indice;
+            }
+            corrente = corrente.next;
+            indice++;
+        }
+        
+        return -1;
+    }
 }
