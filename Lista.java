@@ -230,4 +230,29 @@ public class Lista <T>{
         
         return -1;
     }
+    
+    public boolean cancella(T dato) {
+        if (head == null) {
+            return false;
+        }
+        
+        if (head.dato.equals(dato)) {
+            head = head.next;
+            return true;
+        }
+        
+        Nodo<T> precedente = head;
+        Nodo<T> corrente = head.next;
+        
+        while (corrente != null) {
+            if (corrente.dato.equals(dato)) {
+                precedente.next = corrente.next;
+                return true;
+            }
+            precedente = corrente;
+            corrente = corrente.next;
+        }
+        
+        return false;
+    }
 }
