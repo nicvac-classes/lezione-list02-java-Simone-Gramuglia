@@ -255,4 +255,32 @@ public class Lista <T>{
         
         return false;
     }
+
+    public T cancellaInPosizione(int posizione) {
+        if (posizione < 0 || head == null) {
+            throw new IndexOutOfBoundsException("Posizione non valida");
+        }
+
+        if (posizione == 0) {
+            T dato = head.dato;
+            head = head.next;
+            return dato;
+        }
+        
+        Nodo<T> precedente = head;
+        int i = 0;
+        
+        while (precedente.next != null && i < posizione - 1) {
+            precedente = precedente.next;
+            i++;
+        }
+        
+        if (precedente.next == null) {
+            throw new IndexOutOfBoundsException("Posizione oltre la fine della lista");
+        }
+        
+        T dato = precedente.next.dato;
+        precedente.next = precedente.next.next;
+        return dato;
+    }
 }
